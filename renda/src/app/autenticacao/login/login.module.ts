@@ -4,7 +4,7 @@ import { RouterModule } from '@angular/router';
 
 
 import { LoginComponent } from './components/login/login.component';
-//import { LogarComponent } from './components/logar.component';
+import { LogarComponent } from './components/logar.component';
 
 import {ButtonModule} from 'primeng/button';
 import {AvatarModule} from 'primeng/avatar';
@@ -15,12 +15,12 @@ import { GoogleLoginProvider } from 'angularx-social-login';
 
 @NgModule({
   declarations: [
-    LoginComponent//,
-    //LogarComponent
+    LoginComponent,
+    LogarComponent
   ],
   imports: [
     CommonModule,
-    //RouterModule,
+    RouterModule,
     
     SocialLoginModule,
     ButtonModule,

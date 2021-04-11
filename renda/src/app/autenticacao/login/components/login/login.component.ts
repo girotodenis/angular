@@ -37,12 +37,12 @@ export class LoginComponent implements OnInit {
       if(this.isLoggedin){
         console.log('login',this.socialUser)
         localStorage['userLogin'] = JSON.stringify(this.socialUser) ;
-        //this.router.navigate(['/home']);
+        this.router.navigate(['/renda-home']);
       }else{
         // let user:SocialUser = JSON.parse(localStorage['userLogin']) as SocialUser;
         console.log('logout')
         localStorage['userLogin'] = null;
-        //this.router.navigate(['/login']);
+        this.router.navigate(['/login']);
       }
     });
   }
