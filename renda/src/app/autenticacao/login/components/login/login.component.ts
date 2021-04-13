@@ -1,3 +1,4 @@
+import { AutenticacaoService } from '../../../services/autenticacao.service';
 import { Component, OnInit } from '@angular/core';
 import {Router} from '@angular/router'
 
@@ -16,6 +17,7 @@ export class LoginComponent implements OnInit {
   isLoggedin: boolean;  
   
   constructor(
+    private autenticacaoService: AutenticacaoService,
     private socialAuthService: SocialAuthService,
     private router: Router
   ) { 
@@ -23,26 +25,42 @@ export class LoginComponent implements OnInit {
     if(localStorage['userLogin']){
       let user:SocialUser = JSON.parse(localStorage['userLogin']) as SocialUser;
       if(user){
-        this.socialUser = user;
-        this.isLoggedin = (user != null);
+        this.autenticacaoService.usuarioData ={
+          nome: user.name,
+          photoUrl: user.photoUrl,
+          idTokem: user.idToken,
+          email: user.email,
+          logado: true
+        };
       }
-      console.log('user',user)
     }
   }
 
   ngOnInit() {
     this.socialAuthService.authState.subscribe((user) => {
-      this.socialUser = user;
-      this.isLoggedin = (user != null);
-      if(this.isLoggedin){
-        console.log('login',this.socialUser)
-        localStorage['userLogin'] = JSON.stringify(this.socialUser) ;
+      if(user != null){
+        console.log('login',user)
+        this.autenticacaoService.usuarioData ={
+              nome: user.name,
+              photoUrl: user.photoUrl,
+              idTokem: user.idToken,
+              email: user.email,
+              logado: true
+            };
+        localStorage['userLogin'] = JSON.stringify(user) ;
         this.router.navigate(['/renda-home']);
       }else{
         // let user:SocialUser = JSON.parse(localStorage['userLogin']) as SocialUser;
         console.log('logout')
         localStorage['userLogin'] = null;
-        this.router.navigate(['/login']);
+        this.autenticacaoService.usuarioData = {
+          nome: '',
+          photoUrl: '',
+          idTokem: '',
+          email: '',
+          logado: false
+        };
+        this.router.navigate(['/renda-home']);
       }
     });
   }
@@ -52,12 +70,37 @@ export class LoginComponent implements OnInit {
   }
 
   logOut(): void {
-    if(this.isLoggedin){
+    if(this.logado){
       localStorage['userLogin'] = null;
-      this.socialUser = null;
-      this.isLoggedin = false;
+      this.autenticacaoService.usuarioData = {
+        nome: '',
+        photoUrl: '',
+        idTokem: '',
+        email: '',
+        logado: false
+      };
       this.socialAuthService.signOut();
     }
+  }
+
+  get nome(): string{
+    return this.autenticacaoService.usuarioData.nome;
+  }
+
+  get photoUrl(): string{
+    return this.autenticacaoService.usuarioData.photoUrl;
+  }
+
+  get idTokem(): string{
+    return this.autenticacaoService.usuarioData.idTokem;
+  }
+
+  get email(): string{
+    return this.autenticacaoService.usuarioData.email;
+  }
+
+  get logado(): boolean{
+    return this.autenticacaoService.usuarioData.logado;
   }
 
 }

@@ -1,17 +1,17 @@
 <div class="login-google">
     
     <button pButton class="pi pi-google" 
-            *ngIf="!isLoggedin" 
+            *ngIf="!logado" 
             type="button" (click)="loginWithGoogle()"
             label=" | login">
     </button>
     
-    <a href="#" class="dropdown-toggle" data-toggle="dropdown" (click)="logOut()" *ngIf="isLoggedin">
+    <a href="#" class="dropdown-toggle" data-toggle="dropdown" (click)="logOut()" *ngIf="logado">
         <!-- The user image in the navbar-->
-        <p-avatar image="{{socialUser.photoUrl}}" class="foto" 
-                *ngIf="isLoggedin" 
+        <p-avatar image="{{photoUrl}}" class="foto" 
+                *ngIf="logado" 
                 shape="circle"></p-avatar>
         <!-- hidden-xs hides the username on small devices so only the image appears. -->
-        <span class="hidden-xs">{{socialUser.name}}</span>
+        <span class="hidden-xs">{{nome}}</span>
     </a>
 </div>
