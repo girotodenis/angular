@@ -61,7 +61,7 @@ export class EventService implements OnInit {
 
   registraAcao(rendaId: string, nomeEvento: string, self: string, callback: ( data: any) => void) {
     this.logService.add(`${self} add acao -> ${rendaId} evento: ${nomeEvento}`);
-    //console.warn(`${self} add acao -> ${rendaId} evento: ${nomeEvento}`);
+    console.warn(`${self} add acao -> ${rendaId} evento: ${nomeEvento}`);
     if (!this.events[rendaId]) {
       this.events[rendaId] = {};
     }
@@ -106,11 +106,11 @@ export class EventService implements OnInit {
   }
 
   exeFire(rendaId: string, nomeEvento: string, data: any){
-    //console.warn(`exe Fire -> `,rendaId, nomeEvento, data,this.events);
+    console.warn(`exe Fire -> `,rendaId, nomeEvento, data,this.events);
     if (this.events[rendaId] && this.events[rendaId][nomeEvento]) {
       this.events[rendaId][nomeEvento].forEach((action: any) => {
         this.logService.add(` ->  ->  -> ${action.self.constructor.name}  -> ${rendaId} evento: ${nomeEvento}`);
-        //console.warn(` ->  ->  -> ${action.self.constructor.name}  -> ${rendaId} evento: ${nomeEvento}`);
+        console.warn(` ->  ->  -> ${action.self.constructor.name}  -> ${rendaId} evento: ${nomeEvento}`);
         action.callback( data);
       });
     }
@@ -120,18 +120,18 @@ export class EventService implements OnInit {
     
     this.logService.add(`fire Assinc -> `+time);
     this.send("fireEventAssinc@"+rendaId+"@"+nomeEvento, data, allWindow);
-    //console.warn(`fire Assinc -> ` + this.events);
+    console.warn(`fire Assinc -> ` + this.events);
     this.exeFireAssinc(rendaId,nomeEvento,data,time);
   }
   
   exeFireAssinc(rendaId: string, nomeEvento: string, data: any, time:number=0) {
-    //console.warn(`exe FireAssinc -> `,rendaId, nomeEvento, data);
+    console.warn(`exe FireAssinc -> `,rendaId, nomeEvento, data);
     setTimeout(() =>{
       this.logService.add(`fire Assinc -> `);
       if (this.events[rendaId] && this.events[rendaId][nomeEvento]) {
         this.events[rendaId][nomeEvento].forEach((action: any) => {
           this.logService.add(` ->  ->  -> ${action.self.constructor.name} -> ${rendaId} evento: ${nomeEvento}`);
-          //console.warn(` ->  ->  -> ${action.self.constructor.name} -> ${rendaId} evento: ${nomeEvento}`, data);
+          console.warn(` ->  ->  -> ${action.self.constructor.name} -> ${rendaId} evento: ${nomeEvento}`, data);
           setTimeout(() => action.callback( data ), 0);
         });
       }

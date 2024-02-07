@@ -7,7 +7,7 @@ export class CustomBaseComponent implements OnInit, OnDestroy {
     
     @Input() rendaId!: string;
 
-    constructor(private eventService: EventService) {
+    constructor(public eventService: EventService) {
     }
 
     ngOnDestroy() {
@@ -25,8 +25,6 @@ export class CustomBaseComponent implements OnInit, OnDestroy {
 
     cadastrarEnvento(){};
     registrarAcao(){};
-
-   
 
     addEvento(evento: string) {
         this.eventService.cadastro(this.rendaId, evento);

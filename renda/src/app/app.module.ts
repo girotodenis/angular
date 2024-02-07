@@ -4,10 +4,13 @@ import { BrowserModule, provideClientHydration } from '@angular/platform-browser
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
+import { RendaModule } from './renda/renda.module';
+import { RendaRoutingModule } from './renda/renda-routing.module';
 import { SharedModule } from './shared/shared.module';
+import { LoginModule } from './login/login.module';
+import { LoginRoutingModule } from './login/login-routing.module';
+import { ConfigAppService } from './services/config-app.service';
 
-//import { provideHttpClient } from '@angular/localize/init';
-import { APP_BASE_HREF, PlatformLocation } from '@angular/common';
 
 
 @NgModule({
@@ -16,17 +19,23 @@ import { APP_BASE_HREF, PlatformLocation } from '@angular/common';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule,
-    
-    SharedModule
+    RendaModule,
+    RendaRoutingModule,
+    LoginModule,
+    LoginRoutingModule,
+    SharedModule,
+    AppRoutingModule
   ],
   providers: [
+    ConfigAppService,
     provideClientHydration()
   ],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
 
-function getBaseHref(platformLocation: PlatformLocation): string {
-  return platformLocation.getBaseHrefFromDOM();
+
 }
+
+
+
