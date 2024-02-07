@@ -1,0 +1,6 @@
+<!-- log.component.html -->
+<p-scrollPanel id="log_div" [style]="{ width: '100%', height: '450px' }">
+    <div class="log-container" [innerHTML]="mensagens"></div>
+</p-scrollPanel>
+<button (click)="limparLog()">Limpar Log</button>
+

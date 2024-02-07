@@ -1,0 +1,23 @@
+.calendario-checkbox-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+  
+.calendario-container {
+    margin-right: 20px;
+}
+
+.checkbox-container {
+    display: flex;  /* Alterado para display flex para alinhar as divs lado a lado */
+    width: 500;
+    height: 500;
+    align-items: center;
+    justify-content: center;
+}
+
+.checkbox-item {
+    margin-right: 50px;  /* Adicione margem direita conforme necessário */
+    height: 50px;
+}
+  

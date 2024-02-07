@@ -1,0 +1,25 @@
+/* Estilos específicos para o conteúdo semelhante a uma folha A4 */
+/* Estilos personalizados para o TinyMCE */
+
+/* Configurações gerais do corpo do editor */
+body {
+    margin: 2cm; /* Margens semelhantes a uma folha A4 */
+    background-color: #f8f8f8; /* Cor de fundo semelhante ao Word/OpenOffice */
+    background-repeat: repeat-y; /* Repetir verticalmente para simular uma divisão entre as folhas */
+    background-size: 100% 2cm; /* Altura da linha e largura total */
+  
+    max-width: 21cm; /* Largura semelhante a uma folha A4 para o conteúdo */
+    margin-left: auto;
+    margin-right: auto;
+    font-family: Arial, sans-serif; /* Fonte do texto */
+    font-size: 14px; /* Tamanho da fonte */
+    line-height: 1.5; /* Altura da linha */
+  }
+  
+  /* Estilos específicos para o conteúdo do editor */
+  #tinymce {
+    padding: 20px; /* Espaçamento interno para o conteúdo */
+  }
+  
+  /* Adapte conforme necessário para obter a aparência desejada */
+  

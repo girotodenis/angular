@@ -1,22 +1,14 @@
 import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
+import { BrowserModule, provideClientHydration } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
+import { SharedModule } from './shared/shared.module';
 
-import { LoginModule } from './autenticacao/login/login.module';
-import { LoginRoutingModule } from './autenticacao/login/login-routing.module';
-import { RendaModule } from './uc/renda/renda.module'
-import { RendaRoutingModule } from './uc/renda/renda-routing.module';
+//import { provideHttpClient } from '@angular/localize/init';
+import { APP_BASE_HREF, PlatformLocation } from '@angular/common';
 
-
-
-/**PRIMENG*/
-import {ToolbarModule} from 'primeng/toolbar';
-import {ButtonModule} from 'primeng/button';
-import {SplitButtonModule} from 'primeng/splitbutton';
-/**PRIMENG*/
 
 @NgModule({
   declarations: [
@@ -24,21 +16,17 @@ import {SplitButtonModule} from 'primeng/splitbutton';
   ],
   imports: [
     BrowserModule,
+    AppRoutingModule,
     
-    ToolbarModule,
-    ButtonModule,
-    SplitButtonModule,
-    
-    LoginModule,
-    LoginRoutingModule,
-    
-    RendaModule,
-    RendaRoutingModule,
-
-    //modulo raiz deve ser o ultimo
-    AppRoutingModule
+    SharedModule
   ],
-  providers: [],
+  providers: [
+    provideClientHydration()
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
+
+function getBaseHref(platformLocation: PlatformLocation): string {
+  return platformLocation.getBaseHrefFromDOM();
+}

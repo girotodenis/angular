@@ -1,0 +1,25 @@
+nvm use v20.11.0
+
+ng new --no-standalone renda
+
+cd renda
+
+npm install primeng --save
+
+angular.json
+"styles": [
+    "node_modules/primeng/resources/themes/lara-light-blue/theme.css",
+    "node_modules/primeng/resources/primeng.min.css",
+    ...
+]
+
+styles.css
+@import "primeng/resources/themes/lara-light-blue/theme.css";
+@import "primeng/resources/primeng.css";
+
+
+ng generate module shared
+
+cd src/app/shared
+
+ng generate component renda-button
