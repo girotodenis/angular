@@ -1,0 +1,54 @@
+/* Estilos para o layout */
+.layout-wrapper {
+    display: flex;
+    height: 98vh;
+  }
+  
+
+  
+  .layout-main {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+  }
+  
+   /* Remova o estilo que faz as partes ficarem uma ao lado da outra */
+/* Ajuste para alinhar as partes à direita */
+.layout-header {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end; /* Altere para flex-end para alinhar à direita */
+    align-items: flex-end; /* Ajuste o alinhamento conforme necessário */
+    height: auto;
+}
+
+  
+  .layout-content {
+    flex-grow: 1;
+    overflow: hidden; /* Oculta a barra de rolagem enquanto o conteúdo não a atinge */
+  }
+  
+
+ 
+
+.header-part1,
+.header-part2,
+.header-part3 {
+  display: block;
+  margin-bottom: 10px; /* Adicione margem inferior para separar as partes verticalmente */
+}
+
+/* Remova o estilo que limita a largura da segunda parte (Menubar) */
+.header-part2 {
+  width: 100%;
+}
+
+/* Remova o estilo que garante que as partes fiquem uma ao lado da outra */
+.layout-header {
+  display: flex;
+  flex-direction: column; /* Altere para column para empilhar as partes verticalmente */
+  align-items: flex-start; /* Ajuste a alinhamento conforme necessário */
+  height: auto; /* Remova a altura fixa do cabeçalho */
+}
+
+

@@ -16,8 +16,10 @@ import { DsLogComponent } from './ds-log/ds-log.component';
 
 
 import { ScrollPanelModule } from 'primeng/scrollpanel';
+import { MenubarComponent } from './menu/menubar/menubar.component';
 
-
+import {MenubarModule} from 'primeng/menubar';
+import { ChipModule } from 'primeng/chip';
 
 
 @NgModule({
@@ -28,7 +30,8 @@ import { ScrollPanelModule } from 'primeng/scrollpanel';
     DsButtonComponent,
     DsEditorComponent,
     DsAgendadorComponent,
-    DsLogComponent
+    DsLogComponent,
+    MenubarComponent
   ],
   imports: [
     CommonModule,
@@ -38,12 +41,17 @@ import { ScrollPanelModule } from 'primeng/scrollpanel';
     FormsModule,
     BrowserModule,
     ScrollPanelModule,
-    EditorModule
+    EditorModule,
+
+    MenubarModule,
+    ChipModule
   ],
   exports: [
     DsButtonComponent,
     DsEditorComponent,
     DsAgendadorComponent,
+    
+    MenubarComponent,
     DsLogComponent
   ]
 })

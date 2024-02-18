@@ -13,22 +13,11 @@ export class GoogleComponent implements OnInit, OnDestroy {
 
   constructor(private eventService: EventService, private router: Router) {
   }
- 
+
 
   ngOnInit(): void {
 
     this.eventService.cadastro("clique_google", "onclick");
-
-    if (localStorage['userLogin']) {
-      let local: string = localStorage['userLogin'];
-      if (local && "" !== local) {
-        let user: any = JSON.parse(local);
-
-        this.eventService.fireEvent("app_autenticacao", "pos_logar", user);;
-      } else {
-        this.router.navigate(['/login']);
-      }
-    }
 
     /**
     * ação do botão logar
@@ -41,21 +30,22 @@ export class GoogleComponent implements OnInit, OnDestroy {
       };
 
       console.log(" clique_google onclick")
-      
+
       localStorage['userLogin'] = JSON.stringify(user);
-      
+
       this.eventService.fireEvent("app_autenticacao", "pos_login", user);
     });
-    
-    /**
-     * ação do logout
-     */
-    this.eventService.registraAcao("app_autenticacao", "logout", "login-google", () => {
-      console.log(" app_autenticacao logout ")
-      localStorage['userLogin'] = null;
-      this.router.navigate(['/login']);
-    });
 
+
+    if (localStorage['userLogin']) {
+      let local: string = localStorage['userLogin'];
+      if (local && "" !== local) {
+        let user: any = JSON.parse(local);
+        this.eventService.fireEvent("app_autenticacao", "pos_logar", user);;
+      } else {
+        this.router.navigate(['/login']);
+      }
+    }
 
 
 

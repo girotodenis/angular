@@ -1,0 +1,24 @@
+<div class="layout-sidebar">
+    <!-- Seu conteúdo de menu aqui -->
+    <div class="card flex justify-content-center">
+        <ds-button [rendaId]="rendaId">|||</ds-button>
+    </div>
+    <div class="card flex justify-content-center" >
+        
+        <p-listbox [options]="itens"
+                    [(ngModel)]="selected"
+                    (onChange)="onItemSelect($event)"
+                    optionLabel="name" 
+                    [listStyle]="{ 'max-height': '250px' }" 
+                    [listStyle]="{'max-height': '620px'}">
+            <ng-template let-it pTemplate="item">
+                <div class="flex align-items-center gap-2">
+                    <i *ngIf="it.valor>0" [class]="it.ico" pBadge [value]="it.valor"></i>
+                    <span *ngIf="it.valor<1"  [class]="it.ico"></span>
+                    <span *ngIf="ocultar" style="padding-left: 20px;" >{{ it.name }}</span>
+                </div>
+            </ng-template>
+        </p-listbox>
+    </div>
+</div>
+

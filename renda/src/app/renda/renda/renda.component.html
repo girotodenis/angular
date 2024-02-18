@@ -1,2 +1,29 @@
-<span>template renda</span>
-<router-outlet></router-outlet>
+<div class="layout-wrapper">
+  <!-- Sidebar -->
+  <renda-sidebar rendaId="menusidebarApp"></renda-sidebar>
+
+  <!-- Conteúdo principal -->
+  <div class="layout-main" >
+    <!-- Cabeçalho fixo -->
+    <div class="layout-header">
+
+      <!-- Segunda parte - Menubar -->
+      <div class="header-part2" *ngIf="true">
+        <ds-menubar rendaId="menubarApp"></ds-menubar>
+      </div>
+
+    </div>
+
+
+    <!-- Conteúdo da página com scroll -->
+    <div class="layout-content">
+      <p-scrollPanel [style]="{'height': 'calc(100vh - 50px)', 'overflow': 'auto'}">
+        <router-outlet></router-outlet>
+      </p-scrollPanel>
+    </div>
+
+    <!-- Rodapé fixo -->
+    <renda-footer rendaId="footerApp"></renda-footer>
+
+  </div>
+</div>
