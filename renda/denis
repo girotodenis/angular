@@ -1,5 +1,7 @@
 nvm use v20.11.0
 
+npm i -g @angular/cli@17.3.1
+
 ng new --no-standalone renda
 
 cd renda
